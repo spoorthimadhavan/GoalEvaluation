@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Goal{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Goal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        textarea,
+        input[type="date"],
+        input[type="range"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        input[type="range"] {
+            width: calc(100% - 22px); /* Adjust width to accommodate thumb size */
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create New Goal</h1>
+        <form method="POST" action="{{ url_for('create_goal') }}">
+            <label for="department">Department:</label>
+            <input type="text" id="department" name="department">
+
+            <label for="statement">Statement:</label>
+            <textarea id="statement" name="statement"></textarea>
+
+            <label for="status">Status (1-10):</label>
+            <input type="text" id="status" name="status" readonly>
+            <input type="range" id="statusRange" name="statusRange" min="1" max="10" onchange="updateStatus()">
+
+            <label for="determination_method">Determination Method:</label>
+            <textarea id="determination_method" name="determination_method"></textarea>
+
+            <label for="last_change_comment">Last Change Comment:</label>
+            <textarea id="last_change_comment" name="last_change_comment"></textarea>
+
+            <label for="last_date">Last Date:</label>
+            <input type="date" id="last_date" name="last_date">
+
+            <label for="other_info">Other Info:</label>
+            <textarea id="other_info" name="other_info"></textarea>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        function updateStatus() {
+            const rangeValue = document.getElementById('statusRange').value;
+            document.getElementById('status').value = rangeValue;
+        }
+    </script>
+</body>
+</html>
+{% endblock %}

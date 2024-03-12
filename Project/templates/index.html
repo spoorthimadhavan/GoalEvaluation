@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div style="text-align: center; margin-top: 50px;">
+        <h1 style="font-size: 36px; color: #333; margin-bottom: 20px;">Welcome to the Goalevaluation Tool</h1>
+        <p style="font-size: 18px; color: #666; margin-bottom: 20px;">This tool empowers you to effectively manage goals, monitor progress, and track evaluations with ease.</p>
+        <div style="margin-bottom: 30px;">
+            <p style="font-size: 20px; color: #333; margin-bottom: 10px;">Get Started:</p>
+            <ul style="list-style-type: none; padding: 0;">
+                <li style="margin-bottom: 10px;"><a href="{{ url_for('list_goals') }}" style="font-size: 18px; color: #007bff; text-decoration: none;">View Goal List</a> - Browse through existing goals, view details, and make edits if necessary.</li>
+                <li style="margin-bottom: 10px;"><a href="{{ url_for('create_goal') }}" style="font-size: 18px; color: #007bff; text-decoration: none;">Create Goal</a> - Initiate a new goal and set objectives for your project.</li>
+                <li style="margin-bottom: 10px;"><a href="{{ url_for('view_evaluations') }}" style="font-size: 18px; color: #007bff; text-decoration: none;">View Evaluation</a> - Explore the evaluation history of goals to track progress over time.</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

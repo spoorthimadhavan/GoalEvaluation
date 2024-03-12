@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block title %}Evaluations{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        #showGraphBtn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #showGraphBtn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Evaluations</h1>
+        <div id="evaluationTable">
+            <h2>Evaluation History</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Change Date</th>
+                        <th>Previous Status</th>
+                        <th>Change Description</th>
+                        <th>Changed By</th>
+                    </tr>
+                </thead>
+                <tbody id="evaluationTableBody">
+                    {% for evaluation in evaluations %}
+                    <tr>
+                        <td>{{ evaluation.change_date }}</td>
+                        <td>{{ evaluation.previous_status }}</td>
+                        <td>{{ evaluation.change_description }}</td>
+                        <td>{{ evaluation.changed_by }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <button id="showGraphBtn">Show Graphical Evaluation</button>
+    </div>
+
+    <script>
+        document.getElementById('showGraphBtn').addEventListener('click', function() {
+            window.location.href = "{{ url_for('graphical_view') }}";
+        });
+    </script>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}Page Title{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Goal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        strong {
+            font-weight: bold;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Goal Details</h1>
+        <p><strong>Department:</strong> {{ goal.department }}</p>
+        <p><strong>Statement:</strong> {{ goal.statement }}</p>
+        <p><strong>Status:</strong> {{ goal.status }}</p>
+        <p><strong>Determination Method:</strong> {{ goal.determination_method }}</p>
+        <p><strong>Last Change Comment:</strong> {{ goal.last_change_comment }}</p>
+        <p><strong>Last Date:</strong> {{ goal.last_date }}</p>
+        <p><strong>Other Info:</strong> {{ goal.other_info }}</p>
+        <form action="{{ url_for('edit_goal', goal_id=goal.goal_id) }}" method="get">
+            <button type="submit">Edit</button>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock %}
