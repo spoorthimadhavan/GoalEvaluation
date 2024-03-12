@@ -7,7 +7,6 @@ The Goal Evaluation System is a web application built with Flask, a Python web f
 - Goal management: Users can create new goals, view details of existing goals, and edit goal information.
 - Evaluation history: Tracks the history of goal evaluations, including previous status, change description, changed by, and change date.
 - Graphical visualization: Provides visual representation of goal evaluation data using  bar charts.
-- Responsive design: Ensures the application is accessible and usable across various devices and screen sizes.
 
 ## Technologies Used
 - Flask: A lightweight Python web framework for building web applications.
